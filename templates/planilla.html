@@ -1,0 +1,39 @@
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+    <p>{{message}}</p>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+
+<form action="/Registro" method="POST">
+    <input type="number" name="dni" placeholder="Numero de Documento">
+    <input type="text" name="nombreHerramienta" placeholder="Herramienta">
+    <input type="number" name="cantidad" placeholder="Cantidad">
+    <button type="submit">
+        Guardar
+    </button>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <td>Herramientas</td>
+            <td>Cantidad</td>
+            <td> </td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for herramienta in planilla %}
+            <tr>
+                <td>{{ herramienta.3 }}</td>
+                <td>{{ herramienta.1 }}</td>
+                <td>{{ herramienta.2 }}</td>
+                <td>
+                    <a href="/delete/{{ herramienta.0 }}" >Retira</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

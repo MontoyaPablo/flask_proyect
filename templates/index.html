@@ -1,0 +1,47 @@
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+    <p>{{message}}</p>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+
+<div>
+    <h2>
+        CARGAR NUEVA PERSONA
+    </h2>
+    
+    <form action="/Ingresante" method="POST">
+        <input type="number" name="dni" placeholder="Numero de Documento">
+        <input type="text" name="nombreCompleto" placeholder="Nombre Completo">
+        <button type="submit">
+            Guardar
+        </button>
+    </form>
+</div>
+
+
+<h1 class="text-center">
+    Buscar Persona
+</h1>
+<div class="search-bar">
+    <form name="formSearch" method="POST" action="{{ url_for('ConsultaIngresante')}}" class="search-bar">
+        <input type="number" name="dni" class="search__input" placeholder="Ingrese el DNI">
+        <button type="submit" class="search__btn">
+            <i class="bi bi-search search__icon"></i>
+            Buscar
+        </button>
+    </form>
+
+</div>
+
+<div id="RespBusq">
+    {% block body %}
+    
+
+    
+    {% endblock %}
+    
+</div>
+

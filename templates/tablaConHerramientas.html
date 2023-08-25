@@ -1,0 +1,35 @@
+{% extends 'index.html' %}
+
+{% block body %}
+<div id="resultado" class="text-center">
+    <h4 class="text-center">
+        Resultado <hr>
+    </h4>
+    {% if (datos) %}
+    <table>
+        <thead>
+            <tr>
+                <td>NOMBRE Y APELLIDO</td>
+                <td>DNI</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dato in datos %}
+                <tr>
+                    <td>{{ dato.1 }}</td>
+                    <td>{{ dato.0 }}</td>
+                    <td> 
+                        <a href="/PlanillaDeHerramientas" > Consultar planilla</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+
+    {% else %}
+    <p>No se encontraron resultados para el DNI: <strong> {{busqueda}} </strong> </p>
+    {% endif %}
+
+</div>
+{% endblock %}
