@@ -31,7 +31,7 @@ def Ingresante():
 @app.route('/PlanillaDeHerramientas')
 def PlanillaDeHerramientas():
     cur = mysql.connection.cursor()
-    cur.execute('SELECT * FROM herramientas')
+    cur.execute("SELECT * FROM herramientas WHERE dueñoHerramientas = '%s' " %dni)
     data = cur.fetchall()
     return render_template('planilla.html', planilla = data)
 
